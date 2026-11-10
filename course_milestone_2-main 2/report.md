@@ -34,7 +34,6 @@ One row per repeat of each run. "Run" is the run in the run plan in README Setup
 | 5.3 | A to E | 1 | `jobs/2026-11-09__19-56-14/` (session `final_task__bLpcErz__agent`) | A.1 28/0, A.2 20/0, A.3 30/0, B.1 22/0, B.2 29/0, B.3 18/0, B.4 24/0, C.1 10/0, C.2 16/0, C.3 16/0, C.4 13/0, C.5 19/0, D.1 8/0, D.2 6/0, D.3 8/0, D.4 4/0, E.1 14/0, E.2 13/0, E.3 7/0, E.4 7/0, boot check 4/0 (passed/failed) | about $1.66 (95 steps, about 11 minutes by the agent's own `date` calls) | 71 (each check at least twice; the boot check was run both without and with the node kill) | No | Built the cluster and A to E from an empty `/app` with Specs A to E and plain checks, and no regression suite. A and B were built first: A.2 started at 4/18 (twice) and B.4 took 7 runs (7/18 twice, then 14/10 three times, then 24/0), and B.2 started at 17/12. C.1 started at 5/5, C.3 at 6/10 and D.3 at 1/7 (twice, until Redis supervision was added). E.2 started at 0/13 (twice, no IRC gateway yet) and reached 13/0 via 12/1, and E.4 started at 4/3. After the last code change it reran all the checks and the four-condition boot check (4 passed, 0 failed, node 1 came back on its own) and confirmed everything was running before submitting. |
 | 5.3 | A to E | 2 | `jobs/2026-11-09__20-16-27/` (session `final_task__BunezZn__agent`) | A.1 28/0, A.2 20/0, A.3 30/0, B.1 22/0, B.2 29/0, B.3 18/0, B.4 24/0, C.1 10/0, C.2 16/0, C.3 16/0, C.4 13/0, C.5 19/0, D.1 8/0, D.2 6/0, D.3 8/0, D.4 4/0, E.1 14/0, E.2 13/0, E.3 7/0, E.4 7/0, boot check 4/0 (passed/failed) | about $2.82 (132 steps, about 17 minutes by the agent's own `date` calls) | 67 (including 2 boot check runs) | No | Built the cluster and A to E from an empty `/app` with Specs A to E and plain checks, and no regression suite. A.1 started at 9/22 and stayed there for five runs (the app did not start cleanly) before reaching 28/0. B.1 went 0/1, 22/0, then 19/3 for three runs after a later change, and was fixed again to 22/0. B.2 started at 8/21, B.3 at 2/16 (then 6/12, 16/2, 18/0) and B.4 at 11/13. C.4 took 5 runs and C.5 6 (3/7, 10/0, 18/1 twice, then 19/0). D.1 went 6/2 twice, then 7/0 and 8/0. E.2 started at 0/13 (no IRC gateway yet) and reached 13/0 via 12/1. 2 commands hit the 30 s limit. After its last code change (a B.1 fix) it reran B.1 to B.4, C.1 to C.5 and the boot check (4 passed, 0 failed, node 1 came back on its own). It did not rerun A.1 to A.3, D or E after that change, so those results are from just before it. |
 
-
 ## Experiments
 
 ### 1) Feedback
@@ -153,7 +152,7 @@ Both Run 3 repeats passed everything, at $1.45 and $1.92. Both were above every 
 
 #### Runs compared and why
 
-5.1 (C, D, E specs and checks, plus the A and B regression suite only), 5.2 (the same plus the written Specs A and B), and 5.3 (specs and plain checks for all five), all `verbose`. The official runs are two repeats of 5.1, two of 5.2 and one of 5.3. For (a) I used the `regression.sh` counts inside 5.1 and 5.2, plus the A and B checks inside 5.3. For (b) I compared 5.1 with 5.2, and for (c) I compared 5.2 with 5.3.
+5.1 (C, D, E specs and checks, plus the A and B regression suite only), 5.2 (the same plus the written Specs A and B), and 5.3 (specs and plain checks for all five), all `verbose`. The official runs are two repeats each of 5.1, 5.2 and 5.3. For (a) I used the `regression.sh` counts inside 5.1 and 5.2, plus the A and B checks inside 5.3. For (b) I compared 5.1 with 5.2, and for (c) I compared 5.2 with 5.3.
 
 #### Supporting results
 
@@ -163,26 +162,27 @@ Both Run 3 repeats passed everything, at $1.45 and $1.92. Both were above every 
 | 5.1 repeat 2 | 0 broken | 13 | $3.77 | 163 | passed, submitted |
 | 5.2 repeat 1 | 0 broken | 13 | $3.47 | 154 | passed, submitted |
 | 5.2 repeat 2 | 104 broken | 13 | $4.33 | 194 | submitted with A and B failing |
+| 5.3 repeat 1 | all green | 13 | $1.66 | 95 | passed, submitted |
 | 5.3 repeat 2 | all green | 13 | $2.82 | 132 | passed, submitted |
 
-Four of the five official Run 5 runs passed everything and submitted. The fifth (5.2 repeat 2) submitted with all of C, D and E green but A and B still at 104 broken. All five ran with the cost cap raised to $5.
+Five of the six official Run 5 runs passed everything and submitted. The sixth (5.2 repeat 2) submitted with all of C, D and E green but A and B still at 104 broken. All six ran with the cost cap raised to $5.
 
 #### Answer
 
-a) Yes, in the middle of a run. `regression.sh` counts jumped up several times after changes to shared server code: 5.1 repeat 1 jumped to 261, 257, 251 and 258 broken at four points, 5.2 repeat 1 from 12 to 47, and 5.2 repeat 2 swung between 68 and 166 broken for 18 runs and never recovered. In 5.3, B.1 fell from 22/0 to 19/3 after a later change. But most of these happened while A and B were still being built, so I cannot attribute them to C, D or E alone. In four of the five runs the agent got A and B back to full marks before submitting.
+a) Yes, in the middle of a run. `regression.sh` counts jumped up several times after changes to shared server code: 5.1 repeat 1 jumped to 261, 257, 251 and 258 broken at four points, 5.2 repeat 1 from 12 to 47, and 5.2 repeat 2 swung between 68 and 166 broken for 18 runs and never recovered. In 5.3 repeat 2, B.1 fell from 22/0 to 19/3 after a later change. But most of these happened while A and B were still being built, so I cannot attribute them to C, D or E alone. In five of the six runs the agent got A and B back to full marks before submitting.
 
-b) Not clearly. With only the regression suite (5.1), both repeats finished with everything passing, at $4.89 and $3.77. With the written Specs A and B (5.2), one repeat finished for $3.47 (cheaper than both 5.1 runs) and the other submitted with A and B still at 104 broken, even though C, D and E were all green. All five ran with the same $5 cap, so the cap does not explain it. So in this data the written specs did not make A and B safer, and 5.2 was the less reliable setup, but with two runs each I cannot separate the effect of the specs from run-to-run variation.
+b) Not clearly. With only the regression suite (5.1), both repeats finished with everything passing, at $4.89 and $3.77. With the written Specs A and B (5.2), one repeat finished for $3.47 (cheaper than both 5.1 runs) and the other submitted with A and B still at 104 broken, even though C, D and E were all green. All six ran with the same $5 cap, so the cap does not explain it. So in this data the written specs did not make A and B safer, and 5.2 was the less reliable setup, but with two runs each I cannot separate the effect of the specs from run-to-run variation.
 
-c) No clear difference, with one 5.3 run. 5.3 passed for $2.82 and 132 steps, cheaper than any 5.1 or 5.2 run, and it had no regression suite to run (5.2 repeat 1 ran `regression.sh` 16 times). It still needed A.1 five times at 9/22 before the app started cleanly. One run cannot rule out luck.
+c) Probably a small difference in favor of plain checks, but not a clear one. Both 5.3 runs passed everything and submitted, at $1.66 (95 steps) and $2.82 (132 steps), cheaper than any 5.1 or 5.2 run (the 5.2 run that passed cost $3.47). The 5.2 pair split, one pass and one submitted with A and B at 104 broken, while 5.3 passed both times, and 5.3 had no regression suite to run (5.2 repeat 1 ran `regression.sh` 16 times). Plain checks gave the agent each A and B rule with its own check file, so it could build A and B first and move on once they were green. Plain checks were not trouble-free: 5.3 repeat 1 started A.2 at 4/18 twice and took 7 runs on B.4, and 5.3 repeat 2 stayed at A.1 9/22 for five runs. With two runs each I cannot rule out run-to-run variation.
 
 #### Consistency across repeats
 
-The two 5.1 repeats both passed but differed a lot in cost ($3.77 and $4.89). The two 5.2 repeats were not consistent: one passed with A and B at 0 broken, the other submitted with 104 broken. There is only one 5.3 run, so there is no repeat to compare.
+The two 5.1 repeats both passed but differed a lot in cost ($3.77 and $4.89). The two 5.2 repeats were not consistent: one passed with A and B at 0 broken, the other submitted with 104 broken. The two 5.3 repeats both passed, at $1.66 and $2.82, so they were consistent on outcome but differed by about 70% in cost.
 
 #### Other evidence
 
 - The extra sample runs I kept in the job portfolio (not official) point the same way for 5.2: three more 5.2 attempts hit the cost cap with A and B still broken, with the regression count swinging between about 15 and 120 broken. Several of those swings, and most of the 104 broken in 5.2 repeat 2, were status 000 setup failures after one bad request, so part of the "broken" counts is noise from the server being overloaded or restarted.
 - The regression suite runs its checks in parallel to fit the 30-second command limit, which makes load-related failures more likely.
-- In 5.3, the agent did not rerun A.1 to A.3, D or E after its last code change (a B.1 fix), although the README requires it. Its last results for those checks are from just before the change.
+- In 5.3 repeat 2, the agent did not rerun A.1 to A.3, D or E after its last code change (a B.1 fix), although the README requires it. Its last results for those checks are from just before the change.
 - D.4's performance limits and C.5's group and `@here` rules were the checks that took the most runs across Run 5.
-- Limits: five official runs, one agent, and one failed 5.2 run was partly noise from setup failures. Building all five components is close to the budget whatever the setup.
+- Limits: six official runs, one agent, and one failed 5.2 run was partly noise from setup failures. Building all five components is close to the budget whatever the setup.
