@@ -1,0 +1,109 @@
+{
+    "id": "d14a210c-026b-49ea-9d7c-fe5a12bb5c9b",
+    "task_name": "abundant/slack-clone",
+    "trial_name": "final_task__z8UKARv",
+    "trial_uri": "file:///Users/jessicapinto/Documents/Advanced%20Software%20Dev/course_milestone_2-main%202/tasks/slack-clone-course/jobs/2026-11-09__14-58-36/final_task__z8UKARv",
+    "task_id": {
+        "path": "tasks/slack-clone-course/course-staff-files/final_task"
+    },
+    "source": null,
+    "task_checksum": "1a38e48e12783f115c314d019393ba041788bfba6b0ec7466e81db3bf92d5a7d",
+    "config": {
+        "task": {
+            "path": "tasks/slack-clone-course/course-staff-files/final_task",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "final_task__z8UKARv",
+        "trials_dir": "/Users/jessicapinto/Documents/Advanced Software Dev/course_milestone_2-main 2/tasks/slack-clone-course/jobs/2026-11-09__14-58-36",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "mini_swe_agent_local:MiniSweAgentLocal",
+            "import_path": null,
+            "model_name": "openai/gpt-5.6-luna",
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {
+                "config_file": "/Users/jessicapinto/Documents/Advanced Software Dev/course_milestone_2-main 2/tasks/slack-clone-course/course-staff-files/final_task/agent_llm_config/mswea-openai-gpt-5.6-luna-no-reasoning.yaml",
+                "cost_limit": 5
+            },
+            "mcp_servers": []
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {},
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": true
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "job_id": "992cea8d-ffc8-449e-a064-2804e7b8a632"
+    },
+    "agent_info": {
+        "name": "mini-swe-agent-local",
+        "version": "2.4.6",
+        "model_info": {
+            "name": "gpt-5.6-luna",
+            "provider": "openai"
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 9406622,
+        "n_cache_tokens": 9284872,
+        "n_output_tokens": 46517,
+        "cost_usd": 2.1308592799999992,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": null,
+    "exception_info": null,
+    "started_at": "2026-11-09T19:58:41.507902Z",
+    "finished_at": "2026-11-09T20:11:31.812102Z",
+    "environment_setup": {
+        "started_at": "2026-11-09T19:58:41.685880Z",
+        "finished_at": "2026-11-09T19:59:05.025167Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-11-09T19:59:05.026167Z",
+        "finished_at": "2026-11-09T19:59:19.165287Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-11-09T19:59:19.166190Z",
+        "finished_at": "2026-11-09T20:11:25.479609Z"
+    },
+    "verifier": null,
+    "step_results": null
+}

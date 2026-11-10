@@ -1,0 +1,19 @@
+{
+    "task": {
+        "path": "tasks/slack-clone-course/course-staff-files/final_task"
+    },
+    "trial_name": "final_task__uBZ4qnM",
+    "trials_dir": "/Users/jessicapinto/Documents/Advanced Software Dev/course_milestone_2-main/tasks/slack-clone-course/jobs/2026-11-04__21-47-37",
+    "agent": {
+        "name": "mini_swe_agent_local:MiniSweAgentLocal",
+        "model_name": "openai/gpt-5.6-luna",
+        "kwargs": {
+            "config_file": "/Users/jessicapinto/Documents/Advanced Software Dev/course_milestone_2-main/tasks/slack-clone-course/course-staff-files/final_task/agent_llm_config/mswea-openai-gpt-5.6-luna-no-reasoning.yaml",
+            "cost_limit": 3
+        }
+    },
+    "verifier": {
+        "disable": true
+    },
+    "job_id": "2c122e59-db00-4101-9307-5fc9c6b3de1f"
+}

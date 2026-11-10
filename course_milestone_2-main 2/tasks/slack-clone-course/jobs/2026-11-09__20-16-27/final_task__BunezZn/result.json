@@ -1,0 +1,109 @@
+{
+    "id": "8a6913bf-2497-486b-b7e1-5181257e4eea",
+    "task_name": "abundant/slack-clone",
+    "trial_name": "final_task__BunezZn",
+    "trial_uri": "file:///Users/jessicapinto/Documents/Advanced%20Software%20Dev/course_milestone_2-main%202/tasks/slack-clone-course/jobs/2026-11-09__20-16-27/final_task__BunezZn",
+    "task_id": {
+        "path": "tasks/slack-clone-course/course-staff-files/final_task"
+    },
+    "source": null,
+    "task_checksum": "fdd3fda1c5ea5bacaaa0bc323e5695937a00ffc5fdea0cace57b1fa6756230f7",
+    "config": {
+        "task": {
+            "path": "tasks/slack-clone-course/course-staff-files/final_task",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "final_task__BunezZn",
+        "trials_dir": "/Users/jessicapinto/Documents/Advanced Software Dev/course_milestone_2-main 2/tasks/slack-clone-course/jobs/2026-11-09__20-16-27",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "mini_swe_agent_local:MiniSweAgentLocal",
+            "import_path": null,
+            "model_name": "openai/gpt-5.6-luna",
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {
+                "config_file": "/Users/jessicapinto/Documents/Advanced Software Dev/course_milestone_2-main 2/tasks/slack-clone-course/course-staff-files/final_task/agent_llm_config/mswea-openai-gpt-5.6-luna-no-reasoning.yaml",
+                "cost_limit": 5
+            },
+            "mcp_servers": []
+        },
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {},
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": true
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "job_id": "394f15fe-4148-4430-bf8c-68b8f02ea46f"
+    },
+    "agent_info": {
+        "name": "mini-swe-agent-local",
+        "version": "2.4.6",
+        "model_info": {
+            "name": "gpt-5.6-luna",
+            "provider": "openai"
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 12464692,
+        "n_cache_tokens": 12317925,
+        "n_output_tokens": 56872,
+        "cost_usd": 2.8173032799999995,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": null,
+    "exception_info": null,
+    "started_at": "2026-11-10T01:16:33.642263Z",
+    "finished_at": "2026-11-10T01:35:01.287977Z",
+    "environment_setup": {
+        "started_at": "2026-11-10T01:16:33.784451Z",
+        "finished_at": "2026-11-10T01:16:55.818275Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-11-10T01:16:55.818561Z",
+        "finished_at": "2026-11-10T01:17:10.021481Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-11-10T01:17:10.022056Z",
+        "finished_at": "2026-11-10T01:34:54.961826Z"
+    },
+    "verifier": null,
+    "step_results": null
+}
